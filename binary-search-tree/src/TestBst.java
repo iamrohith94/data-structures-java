@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -83,5 +82,7 @@ public class TestBst {
                 throw new Exception("Element not deleted : " + elementToRemove[i]);
             }
         }
+
+        System.out.println("Testing BST Successful");
     }
 }

@@ -31,7 +31,7 @@ class Bst<T extends Comparable> implements DataStructure<T> {
 
     @Override
     public boolean isValid() {
-        return isValid(root);
+        return isValid(root, null, null);
     }
 
     List<T> inOrder() {
@@ -82,19 +82,17 @@ class Bst<T extends Comparable> implements DataStructure<T> {
         order.add(root.getValue());
     }
 
-    private boolean isValid(BstNode<T> root) {
+    private boolean isValid(BstNode<T> root, BstNode<T> left, BstNode<T> right) {
         if (root == null) {
             return true;
         }
-        boolean isLeftSmall = true;
-        boolean isRightLarge = true;
-        if (root.getLeft() != null) {
-            isLeftSmall = root.getValue().compareTo(root.getLeft().getValue()) > 0;
+        if (left != null && root.getValue().compareTo(left.getValue()) < 0) {
+            return false;
         }
-        if (root.getRight() != null) {
-            isRightLarge = root.getValue().compareTo(root.getRight().getValue()) < 0;
+        if (right != null && right.getValue().compareTo(root.getValue()) < 0) {
+            return false;
         }
-        return isLeftSmall && isRightLarge && isValid(root.getLeft()) && isValid(root.getRight());
+        return isValid(root.getLeft(), left, root) && isValid(root.getRight(), root, right);
      }
 
     private void insert(BstNode<T> root, T data) {
