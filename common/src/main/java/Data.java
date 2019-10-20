@@ -3,7 +3,7 @@
  * @date 08/10/19
  */
 
-class Data<T extends Comparable>  {
+class Data<T extends Comparable> {
 
     private T value;
 
