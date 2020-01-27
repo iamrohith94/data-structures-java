@@ -46,11 +46,6 @@ class Trie implements DataStructure<String> {
         }
     }
 
-    @Override
-    public boolean isValid() {
-        return true;
-    }
-
     public int prefixCount(String prefix) {
         TrieNode curr = root;
         for (char c : prefix.toCharArray()) {

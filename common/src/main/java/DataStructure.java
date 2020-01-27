@@ -10,6 +10,4 @@ public interface DataStructure<T extends Comparable> {
     boolean search(T data);
 
     void delete(T data);
-
-    boolean isValid();
 }

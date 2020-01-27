@@ -9,6 +9,10 @@ import java.util.List;
 class Bst<T extends Comparable> implements DataStructure<T> {
     private BstNode<T> root;
 
+    public BstNode<T> getRoot() {
+        return root;
+    }
+
     @Override
     public void insert(T data) {
         if (root == null) {
@@ -27,11 +31,6 @@ class Bst<T extends Comparable> implements DataStructure<T> {
     public void delete(T data) {
         this.root = delete(root, data);
 
-    }
-
-    @Override
-    public boolean isValid() {
-        return isValid(root, null, null);
     }
 
     List<T> inOrder() {
@@ -81,19 +80,6 @@ class Bst<T extends Comparable> implements DataStructure<T> {
         postOrder(root.getRight(), order);
         order.add(root.getValue());
     }
-
-    private boolean isValid(BstNode<T> root, BstNode<T> left, BstNode<T> right) {
-        if (root == null) {
-            return true;
-        }
-        if (left != null && root.getValue().compareTo(left.getValue()) < 0) {
-            return false;
-        }
-        if (right != null && right.getValue().compareTo(root.getValue()) < 0) {
-            return false;
-        }
-        return isValid(root.getLeft(), left, root) && isValid(root.getRight(), root, right);
-     }
 
     private void insert(BstNode<T> root, T data) {
         final int comparison = root.compareTo(data);

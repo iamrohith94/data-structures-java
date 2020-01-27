@@ -18,9 +18,6 @@ public class TestBst {
         int[] elements = {5, 3, 4, 2, 1, 8, 9, 6, 7};
         for (int i = 0; i < elements.length ; i++) {
             bst.insert(elements[i]);
-            if (!bst.isValid()) {
-                throw new Exception("Invalid BST after inserting : " + elements[i]);
-            }
         }
 
 		/*
@@ -75,9 +72,6 @@ public class TestBst {
         int[] elementToRemove = {8, 2, 6, 4};
         for (int i = 0; i < elementToRemove.length ; i++) {
             bst.delete(elementToRemove[i]);
-            if (!bst.isValid()) {
-                throw new Exception("Invalid BST after deleting : " + elements[i]);
-            }
             if (bst.search(elementToRemove[i])) {
                 throw new Exception("Element not deleted : " + elementToRemove[i]);
             }
